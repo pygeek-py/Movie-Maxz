@@ -1,0 +1,82 @@
+{% extends 'base/base.html' %}
+
+{% block title %}<h1>Login To Movie Maxz</h1>{% endblock %}
+{% block body %}
+	<style type="text/css">
+		body {
+			display: none;
+		}
+		@media(max-width: 600px){
+			body {
+				margin: 0;
+				padding: 0;
+				font-family: san-serif;
+				background: url("../media/images/container4.jpg");
+				color: white;
+				display: block;
+			}
+			.one {
+				padding-top: 1em;
+				width: 100%;
+				height: 15vh;
+			}
+			.two {
+				width: 100%;
+				height: 85vh;
+				background-color: white;
+				color: black;
+				border-top-left-radius: 75px;
+			}
+			.third {
+				padding-left: 3em;
+				padding-top: 5em;
+			}
+			.four {
+				width: 90%;
+				height: 6vh;
+				border-left-style: none;
+				border-right-style: none;
+				border-top-style: none;
+				border-color: black;
+				font-size: 19px;
+			}
+			.five {
+				width: 90%;
+				height: 7vh;
+				background-color: black;
+				color: white;
+				text-align: center;
+				border-radius: 8px;
+				font-size: 18px;
+			}
+			.six {
+				padding-top: 7em;
+				text-align: center;
+				font-size: 22px;
+			}
+			a {
+				text-decoration: none;
+				color: red;`
+			}
+		}
+	</style>
+	<div class="one">
+		<center>
+			<h1>Login</h1>
+		</center>
+	</div>
+	<div class="two">
+	<div class="third">
+		<form method="post">
+		{% csrf_token %}
+			<h2>Username</h2>
+			<input type="text" class="four" name="username"/>
+			<h2>Password</h2>
+			<input type="password" class="four" name="password"/>
+			<br><br>
+			<button type="submit" class="five">Log in</button>
+		</form>
+	</div>
+	<h4 class="six">Don`t have an account? <a href="{% url 'register' %}">Sign up</a></h4>
+	</div>
+{% endblock %}

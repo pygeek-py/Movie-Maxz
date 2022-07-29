@@ -1,0 +1,119 @@
+{% extends 'base/base.html' %}
+
+{% block title %}<h1>Add Image To Movie Maxz</h1>{% endblock %}
+{% block body %}
+	<style type="text/css">
+		body {
+			display: none;
+		}
+		@media(max-width: 600px){
+			body {
+				margin: 0;
+				padding-left: 1em;
+				padding-right: 1em;
+				font-family: san-serif;
+				background-color: black;
+				color: white;
+				display: block;
+			}
+			.four {
+				width: 90%;
+				height: max-content;
+				margin-left: 1em;
+				margin-right: 1em;
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+			}
+			.two {
+				width: 48%;
+				height: 8vh;
+				background-color: red;
+				color: black;
+				text-align: center;
+				border-radius: 10px;
+				font-size: 22px;
+			}
+			.three {
+				width: 100%;
+				height: 8vh;
+				background-color: white;
+				color: black;
+				text-align: center;
+				border-radius: 10px;
+				font-size: 22px;
+				border: none;
+			}
+			.ade {
+				width: 48%;
+				height: 8vh;
+				background-color: white;
+				color: black;
+				text-align: center;
+				border-radius: 10px;
+				font-size: 22px;
+			}
+			
+			.five {
+				width: 96%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.container {
+				width: 70%;
+				height: 20vh;
+				margin: 0 auto;
+				box-shadow: 0px 10px 30px rgb(71, 71, 71);
+				font-family: sans-serif;
+				padding: 1em;
+				word-wrap: break-word;
+			}
+			.but {
+				width: 90%;
+				height: 8vh;
+				border-radius: 20px;
+				background-color: red;
+				color: white;
+				font-size: 25px;
+				border: none;
+				box-shadow: 0px 20px 30px rgb(71, 71, 71);
+			}
+			.sixs {
+				text-decoration: none;
+				color: white;
+				font-size: 46px;
+			}
+		}
+	</style>
+	<div class="one">
+	<div class="five">
+	<h1>Add</h1>
+	<a href="{% url 'profile' %}" class="sixs"><i class="fa fa-user"></i></a>
+	</div>
+	<br />
+	<div class="four">
+	<button class="two">Feeds</button>
+	<a href="https://moviemaxpoll.herokuapp.com/create/{{ request.user.username }}/" class="ade"><button class="three">Your Polls</button></a>
+
+	</div>
+	</div>
+	<br><br>
+	<form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+		<div class="container">
+       <input type="file" name="image">
+	   <br />
+       <input type="submit" class="but" value="post">
+	   </div>
+    </form>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script type="text/javascript">
+
+AOS.init({
+	duration: 2000,
+});
+
+</script>
+{% endblock %}

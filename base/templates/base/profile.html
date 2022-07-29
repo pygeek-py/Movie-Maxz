@@ -1,0 +1,277 @@
+{% extends 'base/base.html' %}
+
+{% block title %}<h1>Your Movie maxz Profile</h1>{% endblock %}
+{% block body %}
+	<style type="text/css">
+		body {
+			display: none;
+		}
+		@media(max-width: 600px){
+			body {
+				margin: 0;
+				padding-left: 1em;
+				padding-right: 1em;
+				font-family: san-serif;
+				background-color: black;
+				color: white;
+				display: block;
+			}
+			.four {
+				width: 100%;
+				height: max-content;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.two {
+				width: 45%;
+				height: 8vh;
+				background-color: red;
+				color: black;
+				text-align: center;
+				border-radius: 10px;
+				font-size: 22px;
+			}
+			.three {
+				width: 100%;
+				height: 8vh;
+				background-color: white;
+				color: black;
+				text-align: center;
+				border-radius: 10px;
+				font-size: 22px;
+				border: none;
+			}
+			.ale {
+				text-decoration: none;
+				color: white;
+				font-size: 55px;
+			}
+			#ales {
+				text-decoration: none;
+				color: white;
+				font-size: 46px;
+			}
+			.five {
+				width: 96%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			#fad {
+				font-size: 38px;
+				color: red;
+				
+			}
+			.seven {
+				width: 96%;
+				height: max-content;
+				margin: 1em;
+			}
+			.eight {
+				width: 100%;
+				height: 70vh;
+				border-radius: 15px;
+				padding: 1em;
+				background-size: cover;
+			}
+			.nine {
+				width: 15%;
+				height: 7vh;
+				border-radius: 35px;
+				background-color: white;
+				text-align: center;
+				padding-top: 2%;
+				font-size: 24px;
+				color: black;
+			}
+			.fa {
+				font-size: 30px;
+				color: white;
+			}
+			.ten {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				width: 96%;
+			}
+			.eleven {
+				color: white;
+			}
+			.twelve {
+				font-size: 24px;
+				color: white;
+				opacity: 0.6;
+			}
+			.fourteen {
+				width: 34%;
+				height: 6vh;
+				background-color: transparent;
+				color: black;
+				text-align: center;
+				border-radius: 8px;
+				font-size: 22px;
+				text-decoration: none;
+			}
+			.fifteen {
+				width: 44%;
+				height: 8vh;
+				background-color: red;
+				color: white;
+				text-align: center;
+				border-radius: 7px;
+				font-size: 22px;
+			}
+			.thirteen {
+				width: 96%;
+				height: max-content;
+				margin-left: 1em;
+				margin-right: 1em;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			#air {
+				color: black;
+				text-decoration: none;
+			}
+			.why {
+				text-decoration: none;
+				color: black;
+			}
+			#fare {
+				font-size: 35px;
+				color: white;
+			}
+			.again {
+				border: none;
+				background-color: black;
+			}
+			.nines {
+				display: flex;
+			}
+			input {
+				width: 70%;
+				height: 6vh;
+				border-radius: 30px;
+				background-color: white;
+				color: black;
+				font-size: 25px;
+				border: none;
+				box-shadow: 0px 10px 20px rgb(71, 71, 71);
+				padding-left: 1%;
+			}
+			.eighteen {
+				width: 100%;
+				height: 15vh;
+				margin: 0;
+				padding: 1em;
+				bottom: 0;
+				position: fixed;
+				background-color: black;
+				border-top-left-radius: 30px;
+				border-top-right-radius: 30px;
+				display: none;
+			}
+			.ade {
+				width: 45%;
+				height: 8vh;
+				background-color: white;
+				color: black;
+				text-align: center;
+				border-radius: 10px;
+				font-size: 22px;
+			}
+		}
+	</style>
+	<div class="one">
+	<div class="five">
+	<h1>Profile</h1>
+	<a href="{% url 'home' %}" class="ale"><i class="fa fa-home" id="ales"></i></a>
+	</div>
+	<br />
+	<div class="four">
+	<button class="two">Your Feeds</button>
+	<br>
+	<a href="{% url 'create' %}" id="air"><i class="fa fa-plus-circle" id="fad"></i></a>
+	<br>
+		<a href="https://moviemaxpoll.herokuapp.com/profile/{{ request.user.username }}/" class="ade"><button class="three">Your Polls</button></a>
+	</div>
+	</div>
+	<div class="seven">
+	{% for all in all %}
+	{% for alls in all.image.all %}
+	{% if all.done == False %}
+		<div style="background: url({{ alls.img.url }});background-size: cover;" class="eight">
+			<div class="ten">
+				<div class="nine">{{ all.rating }}</div>
+				<a href="{% url 'update' all.id %}" class="fa"><i class="fa fa-heart"></i></a>
+			</div>
+			<br />
+			<center>
+			<h1 class="eleven">{{ all.title }}</h1>
+			<h3 class="twelve">{{ all.genre }}</h3>
+			</center>
+			<br><br><br><br><br><br><br><br><br><br>
+			<div class="thirteen">
+				<button class="fourteen"><a href="{% url 'about' all.id %}" class="why">View</a></button>
+				<button class="fifteen" onclick="butt()">Comment</button>
+			</div>
+		</div>
+		<br>
+	{% endif %}
+	
+	{% if all.done == True %}
+		<div style="background: url({{ alls.img.url }});background-size: cover;" class="eight">
+			<div class="ten">
+				<div class="nine">{{ all.rating }}</div>
+				<i class="fa fa-heart" id="may" style="color: red;"></i>
+			</div>
+			<br />
+			<center>
+			<h1 class="eleven">{{ all.title }}</h1>
+			<h3 class="twelve">{{ all.genre }}</h3>
+			</center>
+			<br><br><br><br><br><br><br><br><br><br>
+			<div class="thirteen">
+				<button class="fourteen"><a href="{% url 'about' all.id %}" class="why">View</a></button>
+				<button class="fifteen" onclick="butt()">Comment</button>
+			</div>
+		</div>
+		<br>
+	{% endif %}
+		{% endfor %}
+		{% endfor %}
+	{% for all in all %}
+		<div class="eighteen" id="hig">
+			<center>
+				<i class="fa fa-times" onclick="but()"></i>
+			</center>
+			<form action="{% url 'area' all.id %}" method="post">
+			{% csrf_token %}
+			<div class="nines">
+			{{ form.comment }}
+			<a href="{% url 'area' all.id %}"><button type="submit" class="again"><i class="fa fa-share" id="fare"></i></button></a>
+			</div>
+			</form>
+		</div>
+	{% endfor %}
+	</div>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script type="text/javascript">
+
+AOS.init({
+	duration: 2000,
+});
+
+function butt(){
+	var a = document.getElementById('hig')
+	a.style.display = "block"
+}
+function but(){
+	var a = document.getElementById('hig')
+	a.style.display = "none"
+}
+</script>
+{% endblock %}

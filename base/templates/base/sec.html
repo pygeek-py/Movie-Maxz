@@ -1,0 +1,71 @@
+{% extends 'base/base.html' %}
+
+{% block body %}
+<style type="text/css">
+	body {
+			display: none;
+		}
+	@media(max-width: 600px){
+			body {
+				margin: 0;
+				font-family: san-serif;
+				background-color: white;
+				color: white;
+				display: block;
+			}
+			.one {
+				width: 100%;
+				height: 40vh;
+				border-bottom-left-radius: 70px;
+				background-size: cover;
+			}
+			.two {
+				padding-left: 1em;
+				margin-left: 1em;
+				width: 100%;
+			}
+			input {
+				width: 90%;
+				height: 8vh;
+				border-radius: 30px;
+				background-color: transparent;
+				color: black;
+				font-size: 25px;
+				border: none;
+				box-shadow: 0px 10px 20px rgb(71, 71, 71);
+				padding-left: 1em;
+			}
+			.three {
+				width: 90%;
+				height: 8vh;
+				border-radius: 20px;
+				background-color: red;
+				color: white;
+				font-size: 25px;
+				border: none;
+				box-shadow: 0px 20px 30px rgb(71, 71, 71);
+			}
+	}
+</style>
+{% for all in all %}
+<form action="{% url 'startsec' all.id %}" method="post" enctype="multipart/form-data">
+<div class="one" style="background: url({{ all.img.url }});background-size: cover;" name="order_id"></div>
+<br>
+<div class="two">
+		{% csrf_token %}
+		{{ form.title }}
+		<br /><br />
+		{{ form.description }}
+		<br /><br />
+		{{ form.genre }}
+		<br /><br />
+		{{ form.rating }}
+		<br /><br />
+		{{ form.link }}
+		<br /><br />
+		<a href="{% url 'startsec' all.id %}" class="three"><button class="three" name="all_id" value="{{ all.id }}">Post</button></a>
+		<br /><br />
+</div>
+</form>
+{% endfor %}
+{% endblock %}

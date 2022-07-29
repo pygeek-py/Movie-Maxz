@@ -1,0 +1,287 @@
+{% extends 'base/base.html' %}
+
+{% block title %}<h1>Movie maxz </h1>{% endblock %}
+{% block body %}
+	<style type="text/css">
+		body {
+			display: none;
+		}
+		@media(max-width: 600px){
+			body {
+				margin: 0;
+				padding-left: 1em;
+				padding-right: 1em;
+				font-family: san-serif;
+				background-color: black;
+				color: white;
+				display: block;
+			}
+			.why {
+				text-decoration: none;
+				color: black;
+			}
+			.four {
+				width: 90%;
+				height: max-content;
+				margin-left: 1em;
+				margin-right: 1em;
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+			}
+			.two {
+				width: 48%;
+				height: 8vh;
+				background-color: red;
+				color: black;
+				text-align: center;
+				border-radius: 10px;
+				font-size: 22px;
+			}
+			.three {
+				width: 100%;
+				height: 8vh;
+				background-color: white;
+				color: black;
+				text-align: center;
+				border-radius: 10px;
+				font-size: 22px;
+				border: none;
+			}
+			.ade {
+				width: 48%;
+				height: 8vh;
+				background-color: white;
+				color: black;
+				text-align: center;
+				border-radius: 10px;
+				font-size: 22px;
+			}
+			
+			.five {
+				width: 96%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.seven {
+				width: 96%;
+				height: max-content;
+				margin: 1em;
+			}
+			.eight {
+				width: 100%;
+				height: 70vh;
+				border-radius: 15px;
+				padding: 1em;
+				background-size: cover;
+			}
+			.nine {
+				width: 15%;
+				height: 7vh;
+				border-radius: 35px;
+				background-color: white;
+				text-align: center;
+				padding-top: 2%;
+				font-size: 24px;
+				color: black;
+			}
+			.fa {
+				font-size: 30px;
+				color: white;
+				text-decoration: none;
+			}
+			.may {
+				font-size: 30px;
+				color: red;
+				background-color: red;
+			}
+			.ten {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				width: 96%;
+			}
+			.eleven {
+				color: white;
+			}
+			.twelve {
+				font-size: 24px;
+				color: white;
+				opacity: 0.6;
+			}
+			
+			.fifteen {
+				width: 44%;
+				height: 8vh;
+				background-color: red;
+				color: white;
+				text-align: center;
+				border-radius: 7px;
+				font-size: 22px;
+			}
+			.thirteen {
+				width: 96%;
+				height: max-content;
+				margin-left: 1em;
+				margin-right: 1em;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.sixteen {
+				width: 100%;
+				height: 70vh;
+				border-radius: 15px;
+				background: url("../media/images/strange.jpg");
+				padding: 1em;
+				background-size: cover;
+			}
+			.aiu {
+				text-decoration: none;
+				color: white;
+				font-size: 45px;
+			}
+			#aius {
+				text-decoration: none;
+				color: white;
+				font-size: 45px;
+			}
+			.eighteen {
+				width: 100%;
+				height: 15vh;
+				margin: 0;
+				padding: 1em;
+				bottom: 0;
+				position: fixed;
+				background-color: black;
+				border-top-left-radius: 30px;
+				border-top-right-radius: 30px;
+				display: none;
+			}
+			.twenty {
+				width: 100%;
+				height: 90%;
+				overflow-y: scroll;
+			}
+			.fourteen {
+				width: 34%;
+				height: 6vh;
+				background-color: transparent;
+				color: white;
+				text-align: center;
+				border-radius: 8px;
+				font-size: 22px;
+			}
+			input {
+				width: 70%;
+				height: 6vh;
+				border-radius: 30px;
+				background-color: white;
+				color: black;
+				font-size: 25px;
+				border: none;
+				box-shadow: 0px 10px 20px rgb(71, 71, 71);
+				padding-left: 1%;
+			}
+			#fare {
+				font-size: 35px;
+				color: white;
+			}
+			.again {
+				border: none;
+				background-color: black;
+			}
+			.nines {
+				display: flex;
+			}
+		}
+	</style>
+	<div class="one">
+	<div class="five">
+	<h1>Movies</h1>
+	<a href="{% url 'profile' %}" class="aiu"><i class="fa fa-user" id="aius"></i></a>
+	</div>
+	<br />
+	<div class="four">
+	<button class="two">Feeds</button>
+	<a href="https://moviemaxpoll.herokuapp.com/{{ request.user.username }}/" class="ade"><button class="three">Polls</button></a>
+	</div>
+	</div>
+	<div class="seven">
+	{% for all in all %}
+	{% for alls in all.image.all %}
+	{% if all.done == False %}
+		<div style="background: url({{ alls.img.url }});background-size: cover;" class="eight">
+			<div class="ten">
+				<div class="nine">{{ all.rating }}</div>
+				<a href="{% url 'update' all.id %}" class="fa"><i class="fa fa-heart"></i></a>
+			</div>
+			<br />
+			<center>
+			<h1 class="eleven">{{ all.title }}</h1>
+			<h3 class="twelve">{{ all.genre }}</h3>
+			</center>
+			<br><br><br><br><br><br><br><br><br><br>
+			<div class="thirteen">
+				<button class="fourteen"><a href="{% url 'about' all.id %}" class="why">View</a></button>
+				<button class="fifteen" onclick="butt()">Comment</button>
+			</div>
+		</div>
+		<br>
+	{% endif %}
+	
+	{% if all.done == True %}
+		<div style="background: url({{ alls.img.url }});background-size: cover;" class="eight">
+			<div class="ten">
+				<div class="nine">{{ all.rating }}</div>
+				<a href="{% url 'disupdate' all.id %}"><i class="fa fa-heart" id="may" style="color: red;"></i></a>
+			</div>
+			<br />
+			<center>
+			<h1 class="eleven">{{ all.title }}</h1>
+			<h3 class="twelve">{{ all.genre }}</h3>
+			</center>
+			<br><br><br><br><br><br><br><br><br><br>
+			<div class="thirteen">
+				<button class="fourteen"><a href="{% url 'about' all.id %}" class="why">View</a></button>
+				<button class="fifteen" onclick="butt()">Comment</button>
+			</div>
+		</div>
+		<br>
+	{% endif %}
+		{% endfor %}
+		{% endfor %}
+	</div>
+	{% for all in all %}
+	<div class="eighteen" id="hig">
+			<center>
+				<i class="fa fa-times" onclick="but()"></i>
+			</center>
+			<form action="{% url 'area' all.id %}" method="post">
+			{% csrf_token %}
+			<div class="nines">
+			{{ form.comment }}
+			<a href="{% url 'area' all.id %}"><button type="submit" class="again"><i class="fa fa-share" id="fare"></i></button></a>
+			</div>
+			</form>
+		</div>
+	{% endfor %}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script type="text/javascript">
+
+AOS.init({
+	duration: 2000,
+});
+
+function butt(){
+	var a = document.getElementById('hig')
+	a.style.display = "block"
+}
+function but(){
+	var a = document.getElementById('hig')
+	a.style.display = "none"
+}
+</script>
+{% endblock %}

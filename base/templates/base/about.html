@@ -1,0 +1,290 @@
+{% extends 'base/base.html' %}
+
+{% block body %}
+	<style type="text/css">
+		body {
+			display: none;
+		}
+		@media(max-width: 600px){
+			body {
+				margin: 0;
+				padding: 0;
+				font-family: san-serif;
+				display: block;
+			}
+			.seven {
+				width: 100%;
+				height: max-content;
+				margin: 0;
+				box-shadow: 0px 20px 30px rgb(71, 71, 71);
+			}
+			.eight {
+				width: 100%;
+				height: 70vh;
+				padding: 1em;
+				background-size: cover;
+			}
+			.nine {
+				width: 23%;
+				height: 7vh;
+				border-radius: 35px;
+				background-color: white;
+				text-align: center;
+				padding-top: 2%;
+				font-size: 24px;
+				font-weight: 900;
+				margin-left: 3%;
+			}
+			.wait {
+				font-weight: 900;
+			}
+			.nines {
+				width: 23%;
+				height: 7vh;
+				border-radius: 35px;
+				background-color: white;
+				text-align: center;
+				padding-top: 2%;
+				font-size: 24px;
+				opacity: 0.4;
+			}
+			.niness {
+				width: 25%;
+				height: 7vh;
+				border-radius: 35px;
+				background-color: white;
+				text-align: center;
+				padding-top: 2%;
+				font-size: 24px;
+				opacity: 0.4;
+				margin-top: 30%;
+			}
+			.fa {
+				font-size: 30px;
+				color: white;
+			}
+			#far {
+				font-size: 30px;
+				color: black;
+			}
+			.ten {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				width: 100%;
+			}
+			.eleven {
+				color: white;
+			}
+			.twelve {
+				font-size: 24px;
+				color: white;
+				opacity: 0.6;
+			}
+			.fourteen {
+				width: 34%;
+				height: 6vh;
+				background-color: transparent;
+				color: black;
+				text-align: center;
+				border-radius: 8px;
+				font-size: 22px;
+			}
+			.fifteen {
+				width: 44%;
+				height: 8vh;
+				background-color: red;
+				color: white;
+				text-align: center;
+				border-radius: 7px;
+				font-size: 22px;
+			}
+			.thirteen {
+				width: 96%;
+				height: max-content;
+				margin-left: 1em;
+				margin-right: 1em;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.sixteen {
+				width: 100%;
+				height: 70vh;
+				border-radius: 15px;
+				background: url("../media/images/strange.jpg");
+				padding: 1em;
+				background-size: cover;
+			}
+			.are {
+				text-decoration: none;
+			}
+			.eighteen {
+				width: 100%;
+				height: 15vh;
+				margin: 0;
+				padding: 1em;
+				bottom: 0;
+				position: fixed;
+				background-color: black;
+				border-top-left-radius: 30px;
+				border-top-right-radius: 30px;
+				display: none;
+			}
+			.twenty {
+				width: 100%;
+				height: 90%;
+				overflow-y: scroll;
+			}
+			.one {
+				width: 100%;
+				height: max-content;
+				padding: 1em;
+			}
+			.two {
+				display: flex;
+				align-items: center;
+				width: 75%;
+			}
+			.three {
+				margin-top: 26%;
+			}
+			.four {
+				width: 100%;
+				height: 70vh;
+				background-color: rgb(250, 248, 249);
+				padding: 1em;
+			}
+			.five {
+				height: 1vh;
+				width: 15%;
+				background-color: black;
+			}
+			input {
+				width: 98%;
+				height: 8vh;
+				border-radius: 20px;
+				background-color: rgb(222, 221, 221);
+				color: black;
+				font-size: 25px;
+				border: none;
+			}
+			.six {
+				display: flex;
+				width: 99%;
+				justify-content: space-around;
+				align-items: center;
+			}
+			#fare {
+				font-size: 40px;
+				color: black;
+			}
+			.again {
+				border: none;
+				background-color: rgb(250, 248, 249);
+			}
+			.over {
+				width: 100%;
+				height: 70vh;
+				overflow-y: scroll;
+			}
+			.boy {
+				display: flex;
+				flex-direction: column;
+				padding: 1em;
+				background-color: white;
+				box-shadow: 0px 20px 30px rgb(71, 71, 71);
+			}
+			.spa {
+				font-weight: 100;
+				font-size: 15px; 
+			}
+			.ale {
+				text-decoration: none;
+			}
+		}
+	</style>
+	<div class="seven">
+	{% for alls in all.image.all %}
+	{% if all.done == False %}
+		<div style="background: url({{ alls.img.url }});background-size: cover;" class="eight">
+			<div class="ten">
+			<div class="two">
+				<div class="nines"><a href="{% url 'home' %}" class="ale"><i class="fa fa-home" id="far"></i></a></div>
+				<div class="nine">{{ all.rating }}</div>
+			</div>
+				<a href="{% url 'update' all.id %}"><i class="fa fa-heart"></i></a>
+			</div>
+			<center>
+			<a href="{{ all.link }}" class="are"><div class="niness"><i class="fa fa-play" id="far"></i></div></a>
+			</center>
+			<div class="three">
+			<h1 class="eleven" style="margin-bottom: 0;">{{ all.title }}</h1>
+			<h3 class="twelve" style="margin-top: 0;">{{ all.genre }}</h3>
+			<button class="fourteen">View</button>
+			</div>
+				
+		</div>
+		<br>
+	{% endif %}
+	{% if all.done == True %}
+		<div style="background: url({{ alls.img.url }});background-size: cover;" class="eight">
+			<div class="ten">
+			<div class="two">
+				<div class="nines"><a href="{% url 'home' %}" class="ale"><i class="fa fa-home" id="far"></i></a></div>
+				<div class="nine">{{ all.rating }}</div>
+			</div>
+				<a href="{% url 'disupdate' all.id %}"><i class="fa fa-heart" id="may" style="color: red;"></i></a>
+			</div>
+			<center>
+			<a href="{{ all.link }}" class="are"><div class="niness"><i class="fa fa-play" id="far"></i></div></a>
+			</center>
+			<div class="three">
+			<h1 class="eleven" style="margin-bottom: 0;">{{ all.title }}</h1>
+			<h3 class="twelve" style="margin-top: 0;">{{ all.genre }}</h3>
+			<button class="fourteen">View</button>
+			</div>
+				
+		</div>
+		<br>
+	{% endif %}
+	{% endfor %}
+	</div>
+	<div class="one">
+		<h1 class="wait">{{ all.genre }}</h1>
+		<h3>{{ all.description }}</h3>
+	</div>
+	<br /><br />
+	<div class="four">
+		<center>
+			<h1 class="wait">Comments</h1>
+			<div class="five"></div>
+		</center>
+		<br />
+		<form method="post">
+			{% csrf_token %}
+			<div class="six">
+			{{ form.comment }}
+			<a href="{% url 'about' all.id %}"><div class="nines"><button type="submit" class="again"><i class="fa fa-share" id="fare"></i></div></button></a>
+			</div>
+		</form>
+		<div class="over">
+		{% for adds in adds %}
+			<div class="boy">
+				<h1 style="font-weight: 900;margin-bottom: 0;">{{ adds.person }}.<span class="spa">{{ adds.date }}</span></h1>
+				<h3 style="margin-top: 0;">{{ adds.comment }}</h3>
+			</div>
+			<br />
+		{% endfor %}
+		</div>
+	</div>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script type="text/javascript">
+
+AOS.init({
+	duration: 2000,
+});
+
+</script>
+{% endblock %}
