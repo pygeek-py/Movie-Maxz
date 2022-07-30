@@ -140,7 +140,7 @@ AWS_QUERYSTRING_AUTH = False
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_ACCESS_KEY_ID = 'AKIAW4ORLIWQ7HDR7YFM'
 AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'moviemaxz-bucket'
+AWS_STORAGE_BUCKET_NAME = 'moviemaxz'
 
 
 # Default primary key field type
