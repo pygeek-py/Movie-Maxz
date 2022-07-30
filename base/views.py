@@ -47,8 +47,6 @@ def profile(request):
     })
 
 def started(request):
-    if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse("started"))
     return render(request, "base/started.html", {})
     
 def sec(request):
