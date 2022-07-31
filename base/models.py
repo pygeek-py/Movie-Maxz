@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 class movieimg(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     img = models.ImageField(upload_to='images/')
-    date = models.DateTimeField(auto_now_add=True, null=True)
 
 class aboutmovie(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
@@ -15,7 +14,6 @@ class aboutmovie(models.Model):
     rating = models.DecimalField(max_digits=2, decimal_places=1)
     link = models.URLField(max_length=300, null=True)
     done = models.BooleanField(default=False)
-    date = models.DateTimeField(auto_now_add=True, null=True)
 
 class review(models.Model):
     join = models.ForeignKey(aboutmovie, on_delete=models.CASCADE)
