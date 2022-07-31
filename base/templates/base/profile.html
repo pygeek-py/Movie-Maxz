@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 
-{% block title %}<h1>Your Movie maxz Profile</h1>{% endblock %}
+{% block title %}Your Movie maxz Profile{% endblock %}
 {% block body %}
 	<style type="text/css">
 		body {
@@ -11,7 +11,7 @@
 				margin: 0;
 				padding-left: 1em;
 				padding-right: 1em;
-				font-family: san-serif;
+				font-family: sans-serif;
 				background-color: black;
 				color: white;
 				display: block;
@@ -20,26 +20,26 @@
 				width: 100%;
 				height: max-content;
 				display: flex;
-				justify-content: space-between;
+				justify-content: space-around;
 				align-items: center;
 			}
 			.two {
-				width: 45%;
-				height: 8vh;
+				width: 40%;
+				height: 5vh;
 				background-color: red;
 				color: black;
 				text-align: center;
 				border-radius: 10px;
-				font-size: 22px;
+				font-weight: 600;
+				border: none;
 			}
 			.three {
 				width: 100%;
-				height: 8vh;
+				height: 5vh;
 				background-color: white;
 				color: black;
 				text-align: center;
 				border-radius: 10px;
-				font-size: 22px;
 				border: none;
 			}
 			.ale {
@@ -59,7 +59,7 @@
 				align-items: center;
 			}
 			#fad {
-				font-size: 38px;
+				font-size: xx-large;
 				color: red;
 				
 			}
@@ -106,8 +106,8 @@
 			.fourteen {
 				width: 34%;
 				height: 6vh;
-				background-color: transparent;
-				color: black;
+				background-color: black;
+				color: white;
 				text-align: center;
 				border-radius: 8px;
 				font-size: 22px;
@@ -137,7 +137,7 @@
 			}
 			.why {
 				text-decoration: none;
-				color: black;
+				color: white;
 			}
 			#fare {
 				font-size: 35px;
@@ -162,6 +162,7 @@
 				padding-left: 1%;
 			}
 			.eighteen {
+				animation: slideup .6s linear 1;
 				width: 100%;
 				height: 15vh;
 				margin: 0;
@@ -173,14 +174,23 @@
 				border-top-right-radius: 30px;
 				display: none;
 			}
+			@keyframes slideup {
+				0% {
+					-webkit-transform: translateY(100%);
+				}
+				100% {
+					-webkit-transform: translateY(0);
+				}
+			}
 			.ade {
-				width: 45%;
-				height: 8vh;
+				width: 40%;
+				height: 5vh;
 				background-color: white;
 				color: black;
 				text-align: center;
 				border-radius: 10px;
-				font-size: 22px;
+				border: none;
+				font-weight: 600;
 			}
 		}
 	</style>
@@ -202,7 +212,7 @@
 	{% for all in all %}
 	{% for alls in all.image.all %}
 	{% if all.done == False %}
-		<div style="background: url({{ alls.img.url }});background-size: cover;" class="eight">
+		<div style="background: url({{ alls.img.url }});background-size: cover;" class="eight" data-aos="zoom-in">
 			<div class="ten">
 				<div class="nine">{{ all.rating }}</div>
 				<a href="{% url 'update' all.id %}" class="fa"><i class="fa fa-heart"></i></a>
@@ -222,7 +232,7 @@
 	{% endif %}
 	
 	{% if all.done == True %}
-		<div style="background: url({{ alls.img.url }});background-size: cover;" class="eight">
+		<div style="background: url({{ alls.img.url }});background-size: cover;" class="eight" data-aos="zoom-in">
 			<div class="ten">
 				<div class="nine">{{ all.rating }}</div>
 				<i class="fa fa-heart" id="may" style="color: red;"></i>

@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 
-{% block title %}<h1>Sign up for Movie maxz</h1>{% endblock %}
+{% block title %}Sign up for Movie maxz{% endblock %}
 {% block body %}
 	<style type="text/css">
 		body {
@@ -75,7 +75,7 @@
 	</div>
 	<div class="two">
 	<div class="third">
-		<form method="post">
+	<form method="post">
 		{% csrf_token %}
 			<h3>Username</h3>
 			{{ form.username }}

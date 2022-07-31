@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 import random
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
@@ -152,6 +153,11 @@ def register(request):
             return redirect('/login')
     else:
         form = registerform()
+        #messages.debug(request, '%s SQL statements were executed.' % count)
+        #messages.info(request, 'Three credits remain in your account.')
+        #messages.success(request, 'Profile details updated.')
+        #messages.warning(request, 'Your account expires in three days.')
+        #messages.error(request, 'There was an Error in Signing you Up.')
     return render(request, "base/register.html", {
         'form': form
     })

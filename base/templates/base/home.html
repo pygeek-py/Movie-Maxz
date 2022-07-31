@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 
-{% block title %}<h1>Movie maxz </h1>{% endblock %}
+{% block title %}Movie maxz{% endblock %}
 {% block body %}
 	<style type="text/css">
 		body {
@@ -11,36 +11,35 @@
 				margin: 0;
 				padding-left: 1em;
 				padding-right: 1em;
-				font-family: san-serif;
+				font-family: sans-serif;
 				background-color: black;
 				color: white;
 				display: block;
 			}
 			.why {
 				text-decoration: none;
-				color: black;
+				color: white;
 			}
 			.four {
-				width: 90%;
+				width: 100%;
 				height: max-content;
-				margin-left: 1em;
-				margin-right: 1em;
 				display: flex;
 				justify-content: space-around;
 				align-items: center;
 			}
 			.two {
-				width: 48%;
-				height: 8vh;
+				width: 46%;
+				height: 7vh;
 				background-color: red;
 				color: black;
 				text-align: center;
 				border-radius: 10px;
 				font-size: 22px;
+				border: none;
 			}
 			.three {
 				width: 100%;
-				height: 8vh;
+				height: 7vh;
 				background-color: white;
 				color: black;
 				text-align: center;
@@ -49,13 +48,14 @@
 				border: none;
 			}
 			.ade {
-				width: 48%;
-				height: 8vh;
+				width: 46%;
+				height: 7vh;
 				background-color: white;
 				color: black;
 				text-align: center;
 				border-radius: 10px;
 				font-size: 22px;
+				border: none;
 			}
 			
 			.five {
@@ -148,6 +148,7 @@
 				font-size: 45px;
 			}
 			.eighteen {
+				animation: slideup .6s linear 1;
 				width: 100%;
 				height: 15vh;
 				margin: 0;
@@ -159,6 +160,14 @@
 				border-top-right-radius: 30px;
 				display: none;
 			}
+			@keyframes slideup {
+				0% {
+					-webkit-transform: translateY(100%);
+				}
+				100% {
+					-webkit-transform: translateY(0);
+				}
+			}
 			.twenty {
 				width: 100%;
 				height: 90%;
@@ -167,7 +176,7 @@
 			.fourteen {
 				width: 34%;
 				height: 6vh;
-				background-color: transparent;
+				background-color: black;
 				color: white;
 				text-align: center;
 				border-radius: 8px;
@@ -199,7 +208,7 @@
 	</style>
 	<div class="one">
 	<div class="five">
-	<h1>Movies</h1>
+	<h1>Movie Maxz</h1>
 	<a href="{% url 'profile' %}" class="aiu"><i class="fa fa-user" id="aius"></i></a>
 	</div>
 	<br />
@@ -212,7 +221,7 @@
 	{% for all in all %}
 	{% for alls in all.image.all %}
 	{% if all.done == False %}
-		<div style="background: url({{ alls.img.url }});background-size: cover;" class="eight">
+		<div style="background: url({{ alls.img.url }});background-size: cover;" class="eight" data-aos="zoom-in">
 			<div class="ten">
 				<div class="nine">{{ all.rating }}</div>
 				<a href="{% url 'update' all.id %}" class="fa"><i class="fa fa-heart"></i></a>
@@ -232,7 +241,7 @@
 	{% endif %}
 	
 	{% if all.done == True %}
-		<div style="background: url({{ alls.img.url }});background-size: cover;" class="eight">
+		<div style="background: url({{ alls.img.url }});background-size: cover;" class="eight" data-aos="zoom-in">
 			<div class="ten">
 				<div class="nine">{{ all.rating }}</div>
 				<a href="{% url 'disupdate' all.id %}"><i class="fa fa-heart" id="may" style="color: red;"></i></a>

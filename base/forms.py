@@ -39,7 +39,7 @@ class aboutform(forms.ModelForm):
     class Meta:
         model = aboutmovie
         fields = '__all__'
-        exclude = ['user', 'image', 'description']
+        exclude = ['user', 'image', 'description', 'date']
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': 'Title of Movie'}),
             'genre': forms.TextInput(attrs={'placeholder': 'Genre of Movie'}),
